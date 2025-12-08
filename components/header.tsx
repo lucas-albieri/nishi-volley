@@ -13,7 +13,7 @@ export default function Header() {
                     <div className="text-3xl font-bold bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
                         ⚡
                     </div>
-                    <div className="text-xl font-bold text-foreground">LUCAS</div>
+                    <div className="text-xl font-bold text-foreground">Lucas Albieri - Nishinoya</div>
                 </div>
 
                 <div className="hidden md:flex gap-8">
