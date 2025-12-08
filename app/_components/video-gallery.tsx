@@ -75,29 +75,29 @@ export default function VideoGallery({ videos }: Props) {
 
                 {/* Paginação */}
                 {totalPages > 1 && (
-                    <div className="flex items-center justify-center gap-4 mt-12">
+                    <div className="flex items-center justify-center gap-2 md:gap-4 mt-12">
                         <button
                             onClick={goToPrevPage}
                             disabled={currentPage === 1}
-                            className="px-4 py-2 rounded-lg border border-border hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition flex items-center gap-2"
+                            className="px-3 md:px-4 py-2 rounded-lg border border-border hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition flex items-center gap-1 md:gap-2 text-sm md:text-base"
                             aria-label="Página anterior"
                         >
-                            <ChevronLeft size={20} />
-                            Anterior
+                            <ChevronLeft size={16} className="md:w-5 md:h-5" />
+                            <span className="hidden sm:inline">Anterior</span>
                         </button>
 
-                        <span className="text-muted-foreground">
-                            Página {currentPage} de {totalPages}
+                        <span className="text-muted-foreground text-sm md:text-base px-2">
+                            {currentPage}/{totalPages}
                         </span>
 
                         <button
                             onClick={goToNextPage}
                             disabled={currentPage === totalPages}
-                            className="px-4 py-2 rounded-lg border border-border hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition flex items-center gap-2"
+                            className="px-3 md:px-4 py-2 rounded-lg border border-border hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition flex items-center gap-1 md:gap-2 text-sm md:text-base"
                             aria-label="Próxima página"
                         >
-                            Próxima
-                            <ChevronRight size={20} />
+                            <span className="hidden sm:inline">Próxima</span>
+                            <ChevronRight size={16} className="md:w-5 md:h-5" />
                         </button>
                     </div>
                 )}

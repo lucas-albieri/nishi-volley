@@ -23,11 +23,11 @@ export default function Stats() {
     ]
 
     return (
-        <section id="stats" className="py-20 px-4 bg-muted/30">
+        <section id="stats" className="py-12 md:py-20 px-4 bg-muted/30">
             <div className="max-w-6xl mx-auto">
-                <h2 className="text-4xl font-bold text-center mb-16">Estatísticas</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-16">Estatísticas</h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                     {stats.map((stat) => (
                         <div
                             key={stat.label}
