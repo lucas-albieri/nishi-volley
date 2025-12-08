@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 
 export default function Header() {
@@ -9,41 +11,51 @@ export default function Header() {
     return (
         <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 border-b border-border">
             <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-                <div className="flex items-center gap-2">
-                    <div className="text-3xl font-bold bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
-                        ⚡
+                <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition">
+                    <div className="relative  w-10 h-10">
+                        <Image
+                            src="/android-chrome-192x192.png"
+                            alt="Logo"
+                            width={64}
+                            height={64}
+                            className="object-contain rounded-full"
+                        />
                     </div>
                     <div className="text-xl font-bold text-foreground">Lucas Albieri - Nishinoya</div>
-                </div>
+                </Link>
 
                 <div className="hidden md:flex gap-8">
-                    <a href="#videos" className="text-foreground hover:text-primary transition">
+                    <Link href="#videos" className="text-foreground hover:text-primary transition">
                         Vídeos
-                    </a>
-                    <a href="#stats" className="text-foreground hover:text-primary transition">
+                    </Link>
+                    <Link href="#stats" className="text-foreground hover:text-primary transition">
                         Estatísticas
-                    </a>
-                    <a href="#contact" className="text-foreground hover:text-primary transition">
+                    </Link>
+                    <Link href="#contact" className="text-foreground hover:text-primary transition">
                         Contato
-                    </a>
+                    </Link>
                 </div>
 
-                <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                <button
+                    className="md:hidden"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+                >
                     {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </nav>
 
             {isMenuOpen && (
                 <div className="md:hidden bg-background border-t border-border p-4 flex flex-col gap-4">
-                    <a href="#videos" className="text-foreground hover:text-primary transition">
+                    <Link href="#videos" className="text-foreground hover:text-primary transition">
                         Vídeos
-                    </a>
-                    <a href="#stats" className="text-foreground hover:text-primary transition">
+                    </Link>
+                    <Link href="#stats" className="text-foreground hover:text-primary transition">
                         Estatísticas
-                    </a>
-                    <a href="#contact" className="text-foreground hover:text-primary transition">
+                    </Link>
+                    <Link href="#contact" className="text-foreground hover:text-primary transition">
                         Contato
-                    </a>
+                    </Link>
                 </div>
             )}
         </header>
