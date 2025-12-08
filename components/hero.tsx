@@ -25,8 +25,7 @@ export default function Hero() {
                         </div>
 
                         <p className="text-xl text-muted-foreground max-w-md leading-relaxed">
-                            Libero profissional inspirado em Nishinoya. Confira minhas melhores jogadas de defesa e agilidade na
-                            quadra.
+                            Inspirado no Nishinoya, exploro todas as posições: defesas com o pé, levantadas precisas e cortadas potentes. Versatilidade em cada jogada.
                         </p>
 
                         <div className="flex flex-wrap gap-4">

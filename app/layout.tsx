@@ -7,7 +7,7 @@ const _workSans = Work_Sans({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Lucas | Vôlei",
-  description: "Portfólio de Lucas, inspirado em Nishinoya. Confira minhas melhores jogadas de vôlei.",
+  description: "Jogador de vôlei versátil inspirado em Nishinoya. Defesas criativas, levantadas e cortadas - explorando todas as posições da quadra.",
   generator: "v0.app",
   icons: {
     icon: [

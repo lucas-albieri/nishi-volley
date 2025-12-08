@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { Mail, Instagram, Linkedin, Youtube } from "lucide-react"
 
 export default function Footer() {
@@ -10,52 +11,62 @@ export default function Footer() {
                     <div className="space-y-4">
                         <h3 className="text-xl font-bold">Lucas</h3>
                         <p className="text-background/70">
-                            Libero profissional dedicado à excelência nas defesas e ao desenvolvimento contínuo.
+                            Jogador versátil em constante aprendizado, com defesas criativas e paixão pelo desenvolvimento completo no vôlei.
                         </p>
                     </div>
 
                     <div className="space-y-4">
                         <h4 className="text-lg font-bold">Links Rápidos</h4>
                         <div className="space-y-2">
-                            <a href="#videos" className="block text-background/70 hover:text-background transition">
+                            <Link href="#videos" className="block text-background/70 hover:text-background transition">
                                 Vídeos
-                            </a>
-                            <a href="#stats" className="block text-background/70 hover:text-background transition">
+                            </Link>
+                            <Link href="#stats" className="block text-background/70 hover:text-background transition">
                                 Estatísticas
-                            </a>
-                            <a href="#contact" className="block text-background/70 hover:text-background transition">
+                            </Link>
+                            <Link href="#contact" className="block text-background/70 hover:text-background transition">
                                 Contato
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
                     <div className="space-y-4">
                         <h4 className="text-lg font-bold">Conecte-se</h4>
                         <div className="flex gap-4">
-                            <a
+                            <Link
                                 href="https://instagram.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Instagram"
                                 className="bg-background/10 hover:bg-background/20 p-3 rounded-full transition"
                             >
                                 <Instagram size={20} />
-                            </a>
-                            <a
+                            </Link>
+                            <Link
                                 href="https://youtube.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="YouTube"
                                 className="bg-background/10 hover:bg-background/20 p-3 rounded-full transition"
                             >
                                 <Youtube size={20} />
-                            </a>
-                            <a
+                            </Link>
+                            <Link
                                 href="https://linkedin.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="LinkedIn"
                                 className="bg-background/10 hover:bg-background/20 p-3 rounded-full transition"
                             >
                                 <Linkedin size={20} />
-                            </a>
-                            <a
+                            </Link>
+                            <Link
                                 href="mailto:lucas@email.com"
+                                aria-label="Email"
                                 className="bg-background/10 hover:bg-background/20 p-3 rounded-full transition"
                             >
                                 <Mail size={20} />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
