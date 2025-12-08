@@ -1,11 +1,16 @@
-import ky from "ky"
+import cloudinary from "@/lib/cloudinary"
 import type { Video } from "@/types/video"
 
-export async function getVideos() {
+export async function getVideos(): Promise<Video[]> {
     try {
-        const baseUrl = typeof window !== "undefined" ? window.location.origin : "http://localhost:3000"
-        const data = await ky.get(`${baseUrl}/api/videos`).json<Video[]>()
-        return data
+        const response = await cloudinary.api.resources({
+            resource_type: "video",
+            type: "upload",
+            max_results: 100,
+            direction: -1,
+        })
+
+        return response.resources
     } catch (error) {
         console.error("Erro ao buscar vídeos:", error)
         return []
