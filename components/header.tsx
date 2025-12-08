@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Menu, X } from "lucide-react"
+import ThemeToggle from "./theme-toggle"
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -24,7 +25,7 @@ export default function Header() {
                     <div className="text-xl font-bold text-foreground">Lucas Albieri - Nishinoya</div>
                 </Link>
 
-                <div className="hidden md:flex gap-8">
+                <div className="hidden md:flex gap-8 items-center">
                     <Link href="#videos" className="text-foreground hover:text-primary transition">
                         Vídeos
                     </Link>
@@ -34,15 +35,18 @@ export default function Header() {
                     <Link href="#contact" className="text-foreground hover:text-primary transition">
                         Contato
                     </Link>
+                    <ThemeToggle />
                 </div>
 
-                <button
-                    className="md:hidden"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
-                >
-                    {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                <div className="md:hidden flex items-center gap-2">
+                    <ThemeToggle />
+                    <button
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+                    >
+                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
             </nav>
 
             {isMenuOpen && (

@@ -1,8 +1,8 @@
-import VideoGallery from "@/components/video-gallery"
+import VideoGallery from "@/app/_components/video-gallery"
+import Hero from "@/app/_components/hero"
+import Stats from "@/app/_components/stats"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
-import Hero from "@/components/hero"
-import Stats from "@/components/stats"
 import BackgroundMusic from "@/components/background-music"
 import { getVideos } from "@/lib/videos"
 
