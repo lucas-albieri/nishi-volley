@@ -7,6 +7,7 @@ export async function GET() {
             resource_type: "video",
             type: "upload",
             max_results: 100,
+            direction: 1, // -1 para mais recentes primeiro (desc), 1 para mais antigos (asc)
         })
 
         return NextResponse.json(response.resources)

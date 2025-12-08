@@ -5,7 +5,7 @@ import Link from "next/link"
 
 export default function Hero() {
     return (
-        <section className="relative overflow-hidden pt-20 pb-32 md:pt-32 md:pb-48 px-4">
+        <section className="relative overflow-hidden pt-20 pb-32 md:pt-16 md:pb-0 px-4">
             {/* Background decoration */}
             <div className="absolute inset-0 -z-10">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
@@ -44,19 +44,15 @@ export default function Hero() {
                     </div>
 
                     <div className="relative h-96 md:h-full flex items-center justify-center">
-                        <div className="relative w-full h-full flex flex-col items-center justify-center">
-                            <div className="relative w-64 h-64 md:w-96 md:h-96">
-                                <Image
-                                    src="/nishi2.png"
-                                    alt="Lucas jogando vôlei - inspirado em Nishinoya"
-                                    fill
-                                    sizes="(max-width: 768px) 256px, 384px"
-                                    className="object-contain"
-                                    priority
-                                />
-                            </div>
-                            <div className="absolute top-4 left-20 text-7xl font-bold text-primary opacity-30" aria-hidden="true">4</div>
-                            <p className="mt-4 text-primary font-bold text-lg">Versátil</p>
+                        <div className="relative w-64 h-64 md:w-full md:h-140">
+                            <Image
+                                src="/nishi2.png"
+                                alt="Lucas jogando vôlei - inspirado em Nishinoya"
+                                fill
+                                sizes="(max-width: 768px) 256px, 384px"
+                                className="object-contain"
+                                priority
+                            />
                         </div>
                     </div>
                 </div>
