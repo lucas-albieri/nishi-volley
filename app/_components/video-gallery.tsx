@@ -58,7 +58,7 @@ export default function VideoGallery({ videos }: Props) {
                                     src={video.secure_url}
                                     className="w-full h-full object-cover"
                                     preload="metadata"
-                                // loading="lazy"
+                                    muted
                                 />
                                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition flex items-center justify-center">
                                     <Play size={48} className="text-white opacity-80 group-hover:opacity-100 group-hover:scale-110 transition" fill="white" />

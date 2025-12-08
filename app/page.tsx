@@ -14,7 +14,7 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen">
-      <BackgroundMusic musicUrl="/sua-musica.mp3" />
+      <BackgroundMusic musicUrl="/rio.mp3" />
       <Header />
       <Hero />
       <Stats />
