@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 export default function Hero() {
     return (
@@ -15,7 +16,12 @@ export default function Hero() {
             <div className="max-w-6xl mx-auto">
                 <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                     {/* Imagem primeiro no mobile */}
-                    <div className="relative h-52 md:h-full flex items-center justify-center order-1 md:order-2">
+                    <motion.div
+                        className="relative h-52 md:h-full flex items-center justify-center order-1 md:order-2"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                    >
                         <div className="relative w-full max-w-sm md:max-w-none h-full md:h-140">
                             {/* Imagem mobile */}
                             <Image
@@ -36,10 +42,15 @@ export default function Hero() {
                                 priority
                             />
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Texto depois no mobile */}
-                    <div className="space-y-6 md:space-y-8 order-2 md:order-1">
+                    <motion.div
+                        className="space-y-6 md:space-y-8 order-2 md:order-1"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                    >
                         <h1 className="text-5xl md:text-7xl font-bold text-balance leading-tight">
                             <span className="text-foreground">Defesa X</span>
                             <br />
@@ -66,7 +77,7 @@ export default function Hero() {
                                 Contato
                             </Link>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

@@ -41,7 +41,7 @@ export default function IntroVideo() {
                 <ReactPlayer
                     src="/abertura.mp4"
                     playing
-                    volume={0.01}
+                    muted
                     width="100%"
                     height="100%"
                     onEnded={handleVideoEnd}
@@ -49,7 +49,7 @@ export default function IntroVideo() {
             </div>
             <button
                 onClick={handleSkip}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 px-8 py-3 text-white rounded-lg transition-all duration-300 border-2 border-white/40 hover:border-white/60 hover:bg-white/10 backdrop-blur-sm"
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 px-8 py-3 text-white rounded-lg transition-all duration-300 border-2 border-white/40 hover:border-white/60 hover:bg-white/10 backdrop-blur-sm cursor-pointer"
             >
                 Pular Intro
             </button>
