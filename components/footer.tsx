@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Mail, Instagram, Linkedin, Youtube } from "lucide-react"
+import { Mail, Instagram, Linkedin, Youtube, Github } from "lucide-react"
 
 export default function Footer() {
     return (
@@ -34,25 +34,16 @@ export default function Footer() {
                         <h4 className="text-lg font-bold">Conecte-se</h4>
                         <div className="flex gap-4">
                             <Link
-                                href="https://instagram.com"
+                                href="https://github.com/lucas-albieri"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                aria-label="Instagram"
+                                aria-label="GitHub"
                                 className="bg-background/10 hover:bg-background/20 p-3 rounded-full transition"
                             >
-                                <Instagram size={20} />
+                                <Github size={20} />
                             </Link>
                             <Link
-                                href="https://youtube.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="YouTube"
-                                className="bg-background/10 hover:bg-background/20 p-3 rounded-full transition"
-                            >
-                                <Youtube size={20} />
-                            </Link>
-                            <Link
-                                href="https://linkedin.com"
+                                href="https://www.linkedin.com/in/lucas-albieri/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="LinkedIn"
@@ -61,7 +52,7 @@ export default function Footer() {
                                 <Linkedin size={20} />
                             </Link>
                             <Link
-                                href="mailto:lucas@email.com"
+                                href="mailto:lucas.albisantos55@gmail.com"
                                 aria-label="Email"
                                 className="bg-background/10 hover:bg-background/20 p-3 rounded-full transition"
                             >
@@ -72,7 +63,7 @@ export default function Footer() {
                 </div>
 
                 <div className="border-t border-background/20 pt-8 text-center text-background/70">
-                    <p>&copy; 2025 Lucas - Libero Profissional. Inspirado em Nishinoya.</p>
+                    <p>&copy; 2025 Lucas Albieri - Jogador Versátil. Inspirado em Nishinoya.</p>
                 </div>
             </div>
         </footer>
