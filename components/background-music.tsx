@@ -17,27 +17,7 @@ export default function BackgroundMusic({ musicUrl }: Props) {
         if (!audio) return
 
         audio.volume = 0.03
-        audio.loop = true        // Tenta reproduzir automaticamente
-        const playAudio = async () => {
-            try {
-                await audio.play()
-                setIsPlaying(true)
-            } catch (error) {
-                // Autoplay bloqueado, espera interação
-                const handleInteraction = async () => {
-                    try {
-                        await audio.play()
-                        setIsPlaying(true)
-                        document.removeEventListener("click", handleInteraction)
-                    } catch (e) {
-                        console.error("Erro ao tocar música:", e)
-                    }
-                }
-                document.addEventListener("click", handleInteraction, { once: true })
-            }
-        }
-
-        playAudio()
+        audio.loop = true
 
         return () => {
             audio.pause()
@@ -48,12 +28,16 @@ export default function BackgroundMusic({ musicUrl }: Props) {
         const audio = audioRef.current
         if (!audio) return
 
-        audio.muted = !isMuted
-        setIsMuted(!isMuted)
-
-        // Se pausado, tenta tocar
-        if (audio.paused) {
-            audio.play().catch(console.error)
+        if (!isPlaying) {
+            // Primeira vez: inicia a música
+            audio.play().then(() => {
+                setIsPlaying(true)
+                setIsMuted(false)
+            }).catch(console.error)
+        } else {
+            // Já está tocando: muta/desmuta
+            audio.muted = !isMuted
+            setIsMuted(!isMuted)
         }
     }
 

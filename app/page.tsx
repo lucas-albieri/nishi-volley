@@ -1,6 +1,7 @@
 import VideoGallery from "@/app/_components/video-gallery"
 import Hero from "@/app/_components/hero"
 import Stats from "@/app/_components/stats"
+import IntroVideo from "@/app/_components/intro-video"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import BackgroundMusic from "@/components/background-music"
@@ -10,10 +11,9 @@ export default async function Home() {
 
   const videos = await getVideos();
 
-  console.log(videos[0]);
-
   return (
     <main className="min-h-screen">
+      <IntroVideo />
       <BackgroundMusic musicUrl="/rio.mp3" />
       <Header />
       <Hero />
