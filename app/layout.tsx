@@ -1,13 +1,14 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Work_Sans } from "next/font/google"
+import Script from "next/script"
 import "./globals.css"
 
 const _workSans = Work_Sans({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Lucas | Vôlei",
-  description: "Portfólio de Lucas, inspirado em Nishinoya. Confira minhas melhores jogadas de vôlei.",
+  description: "Jogador de vôlei versátil inspirado em Nishinoya. Defesas criativas, levantadas e cortadas - explorando todas as posições da quadra.",
   generator: "v0.app",
   icons: {
     icon: [
@@ -29,7 +30,22 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <Script
+          id="theme-script"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const theme = localStorage.getItem('theme') || 
+                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.classList.add(theme);
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className={`font-sans antialiased`}>
         {children}
       </body>

@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Menu, X } from "lucide-react"
+import ThemeToggle from "./theme-toggle"
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -12,7 +13,7 @@ export default function Header() {
         <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 border-b border-border">
             <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
                 <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition">
-                    <div className="relative  w-10 h-10">
+                    <div className="relative  w-16 h-16 md:w-10 md:h-10">
                         <Image
                             src="/android-chrome-192x192.png"
                             alt="Logo"
@@ -21,10 +22,12 @@ export default function Header() {
                             className="object-contain rounded-full"
                         />
                     </div>
-                    <div className="text-xl font-bold text-foreground">Lucas Albieri - Nishinoya</div>
+                    <div className="text-lg md:text-xl font-bold text-foreground">
+                        Lucas Albieri - <span className="text-primary">Nishinoya</span>
+                    </div>
                 </Link>
 
-                <div className="hidden md:flex gap-8">
+                <div className="hidden md:flex gap-8 items-center">
                     <Link href="#videos" className="text-foreground hover:text-primary transition">
                         Vídeos
                     </Link>
@@ -34,15 +37,18 @@ export default function Header() {
                     <Link href="#contact" className="text-foreground hover:text-primary transition">
                         Contato
                     </Link>
+                    <ThemeToggle />
                 </div>
 
-                <button
-                    className="md:hidden"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
-                >
-                    {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                <div className="md:hidden flex items-center gap-2">
+                    <ThemeToggle />
+                    <button
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+                    >
+                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
             </nav>
 
             {isMenuOpen && (
