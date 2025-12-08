@@ -1,55 +1,17 @@
 "use client"
 
+import { Video } from "@/types/video"
 import { Play } from "lucide-react"
 import { useState } from "react"
+import CloudinaryPlayer from "./cloudinary-player"
 
-export default function VideoGallery() {
+
+type Props = {
+    videos: Video[]
+}
+
+export default function VideoGallery({ videos }: Props) {
     const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
-
-    const videos = [
-        {
-            id: 1,
-            title: "Defesa Espetacular",
-            category: "Defesa",
-            thumbnail: "/volleyball-defense-action.jpg",
-            videoUrl: "https://seu-host.com/videos/defesa-1.mp4",
-        },
-        {
-            id: 2,
-            title: "Manchete Ninja",
-            category: "Técnica",
-            thumbnail: "/volleyball-libero-technique.jpg",
-            videoUrl: "https://seu-host.com/videos/manchete-1.mp4",
-        },
-        {
-            id: 3,
-            title: "Mergulho Impossível",
-            category: "Acrobacia",
-            thumbnail: "/volleyball-diving-save.jpg",
-            videoUrl: "https://seu-host.com/videos/mergulho-1.mp4",
-        },
-        {
-            id: 4,
-            title: "Contra-ataque Rápido",
-            category: "Jogada",
-            thumbnail: "/volleyball-fast-counter.jpg",
-            videoUrl: "https://seu-host.com/videos/contra-ataque-1.mp4",
-        },
-        {
-            id: 5,
-            title: "Leitura de Jogo",
-            category: "Estratégia",
-            thumbnail: "/volleyball-game-reading.jpg",
-            videoUrl: "https://seu-host.com/videos/leitura-1.mp4",
-        },
-        {
-            id: 6,
-            title: "Rally Emocionante",
-            category: "Compilação",
-            thumbnail: "/volleyball-exciting-rally.jpg",
-            videoUrl: "https://seu-host.com/videos/rally-1.mp4",
-        },
-    ]
 
     return (
         <section id="videos" className="py-20 px-4">
@@ -65,24 +27,24 @@ export default function VideoGallery() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {videos.map((video) => (
                         <div
-                            key={video.id}
+                            key={video.asset_id}
                             className="group relative overflow-hidden rounded-2xl border border-border hover:border-primary transition cursor-pointer"
-                            onClick={() => setSelectedVideo(video.videoUrl)}
+                            onClick={() => setSelectedVideo(video.secure_url)}
                         >
-                            <div className="relative overflow-hidden h-64">
-                                <img
-                                    src={video.thumbnail || "/placeholder.svg"}
-                                    alt={video.title}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition duration-300"
+                            <div className="relative overflow-hidden h-64 bg-muted flex items-center justify-center">
+                                <video
+                                    src={video.secure_url}
+                                    className="w-full h-full object-cover"
+                                    preload="metadata"
                                 />
                                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition flex items-center justify-center">
-                                    <Play size={48} className="text-white opacity-0 group-hover:opacity-100 transition" fill="white" />
+                                    <Play size={48} className="text-white opacity-80 group-hover:opacity-100 group-hover:scale-110 transition" fill="white" />
                                 </div>
                             </div>
 
-                            <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 to-transparent p-6 translate-y-8 group-hover:translate-y-0 transition">
-                                <p className="text-sm text-accent font-semibold mb-2">{video.category}</p>
-                                <h3 className="text-white font-bold text-lg">{video.title}</h3>
+                            <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 to-transparent p-6">
+                                <h3 className="text-white font-bold text-lg">{video.display_name}</h3>
+                                <p className="text-white/70 text-sm">{video.format.toUpperCase()} • {Math.round(video.bytes / 1024 / 1024)}MB</p>
                             </div>
                         </div>
                     ))}
@@ -92,23 +54,18 @@ export default function VideoGallery() {
             {/* Video Modal */}
             {selectedVideo && (
                 <div
-                    className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
+                    className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
                     onClick={() => setSelectedVideo(null)}
                 >
                     <div
-                        className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden"
+                        className="relative w-full max-w-5xl"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <iframe
-                            width="100%"
-                            height="100%"
-                            src={selectedVideo.replace("https://seu-host.com/videos/", "")}
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                        />
+                        <CloudinaryPlayer videoUrl={selectedVideo} className="rounded-2xl" />
                         <button
                             onClick={() => setSelectedVideo(null)}
-                            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition"
+                            className="absolute -top-12 right-0 bg-white/10 hover:bg-white/20 text-white rounded-full w-10 h-10 flex items-center justify-center transition"
+                            aria-label="Fechar vídeo"
                         >
                             ✕
                         </button>
