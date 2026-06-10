@@ -7,7 +7,7 @@ export async function getVideos(): Promise<Video[]> {
             resource_type: "video",
             type: "upload",
             max_results: 100,
-            direction: 1,
+            direction: -1,
         })
 
         return response.resources
@@ -15,4 +15,5 @@ export async function getVideos(): Promise<Video[]> {
         console.error("Erro ao buscar vídeos:", error)
         return []
     }
-}   
+}
+
